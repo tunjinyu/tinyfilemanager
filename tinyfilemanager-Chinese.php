@@ -1,45 +1,43 @@
 <?php
-//Default Configuration
+//默认配置  若要使用覆盖原文件功能请转到第1024行，记得将上一段注释掉
 $CONFIG = '{"lang":"cn","error_reporting":false,"show_hidden":false,"hide_Cols":false,"theme":"dark"}';
-
 /**
  * H3K | Tiny File Manager V2.5.3
  * @author CCP Programmers
  * @github https://github.com/prasathmani/tinyfilemanager
  * @link https://tinyfilemanager.github.io
  */
-
-//TFM version
+//TFM 版本
 define('VERSION', '2.5.3');
 
-//Application Title
+//应用标题
 define('APP_TITLE', 'Tiny File Manager');
 
-// --- EDIT BELOW CONFIGURATION CAREFULLY ---
+// --- 请仔细编辑以下配置 ---
 
-// Auth with login/password
-// set true/false to enable/disable it
-// Is independent from IP white- and blacklisting
+// 使用身份验证
+// 设置为 "true"/"false "以启用/禁用该功能
+// 独立于 IP 白名单和黑名单
 $use_auth = true;
 
-// Login user name and password
+// 登录用户名和密码
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
-// Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
+// 生成安全密码哈希值 - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
     'admin' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW', //admin@123
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
-// Readonly users
+// 只读用户
 // e.g. array('users', 'guest', ...)
 $readonly_users = array(
     'user'
 );
 
-// Global readonly, including when auth is not being used
+// 全局只读，包括管理员
 $global_readonly = false;
 
-// user specific directories
+// 为每个用户分配特定目录
 // array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
 $directories_users = array();
 
@@ -53,102 +51,103 @@ $highlightjs_style = 'vs';
 // Enable ace.js (https://ace.c9.io/) on view's page
 $edit_files = true;
 
-// Default timezone for date() and time()
+// 默认时区 for date() and time()
 // Doc - http://php.net/manual/en/timezones.php
-$default_timezone = 'Etc/UTC'; // UTC
+$default_timezone = 'Asia/Shanghai';//'Etc/UTC'; // UTC
 
-// Root path for file manager
-// use absolute path of directory i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
+// 文件管理器的根目录
+// 使用目录的绝对路径 i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
 $root_path = $_SERVER['DOCUMENT_ROOT'];
 
-// Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
-// Will not working if $root_path will be outside of server document root
+// 文件管理器中链接的根网址.Relative to $http_host. Variants: '', 'path/to/subfolder'
+// 如果 $root_path 位于服务器文档根目录之外，将不起作用
 $root_url = '';
 
-// Server hostname. Can set manually if wrong
+// 服务器主机名。如果错误，可手动设置
 // $_SERVER['HTTP_HOST'].'/folder'
 $http_host = $_SERVER['HTTP_HOST'];
 
-// input encoding for iconv
+// iconv的输入编码
 $iconv_input_encoding = 'UTF-8';
 
-// date() format for file modification date
+// 文件修改日期的格式 date() 
 // Doc - https://www.php.net/manual/en/function.date.php
 $datetime_format = 'm/d/Y g:i A';
 
-// Path display mode when viewing file information
-// 'full' => show full path
-// 'relative' => show path relative to root_path
-// 'host' => show path on the host
+// 查看文件信息时的路径显示模式
+// 'full' => 显示完整路径
+// 'relative' =>显示相对于根路径的路径
+// 'host' => 显示主机上的路径
 $path_display_mode = 'full';
 
-// Allowed file extensions for create and rename files
+// 创建和重命名文件时允许使用的文件扩展名
 // e.g. 'txt,html,css,js'
 $allowed_file_extensions = '';
 
-// Allowed file extensions for upload files
+// 允许上传的文件扩展名
 // e.g. 'gif,png,jpg,html,txt'
 $allowed_upload_extensions = '';
 
-// Favicon path. This can be either a full url to an .PNG image, or a path based on the document root.
+// Favicon path. 这可以是完整url，也可以是基于根目录的路径
 // full path, e.g http://example.com/favicon.png
 // local path, e.g images/icons/favicon.png
 $favicon_path = '';
 
-// Files and folders to excluded from listing
+// 从列表中排除的文件和文件夹
 // e.g. array('myfile.html', 'personal-folder', '*.php', ...)
 $exclude_items = array();
 
-// Online office Docs Viewer
-// Available rules are 'google', 'microsoft' or false
-// Google => View documents using Google Docs Viewer
-// Microsoft => View documents using Microsoft Web Apps Viewer
-// false => disable online doc viewer
-$online_viewer = 'google';
+// 在线 Office 文档查看器
+// 可用规则为 'google', 'microsoft' or false
+// Google => 使用谷歌文档查看器查看文档
+// Microsoft => 使用微软 Web Apps 查看文档
+// false => 禁用在线文档查看器
+$online_viewer = 'Microsoft';
 
-// Sticky Nav bar
+// Sticky Nav bar 粘贴式导航栏
 // true => enable sticky header
 // false => disable sticky header
 $sticky_navbar = true;
 
-// Maximum file upload size
-// Increase the following values in php.ini to work properly
+// 最大上传文件大小
+// 增加 php.ini 中的以下值，以便正常工作
+// 如果使用虚拟主机，这个值往往是默认的，请不要尝试违规操作！！！
 // memory_limit, upload_max_filesize, post_max_size
 $max_upload_size_bytes = 5000000000; // size 5,000,000,000 bytes (~5GB)
 
-// chunk size used for upload
-// eg. decrease to 1MB if nginx reports problem 413 entity too large
+// 用于上传的块大小
+// 例如，如果 nginx 报告问题 413 实体过大，则减小到 1MB
 $upload_chunk_size_bytes = 2000000; // chunk size 2,000,000 bytes (~2MB)
 
 // Possible rules are 'OFF', 'AND' or 'OR'
-// OFF => Don't check connection IP, defaults to OFF
-// AND => Connection must be on the whitelist, and not on the blacklist
-// OR => Connection must be on the whitelist, or not on the blacklist
+// OFF => 不检查连接 IP，默认为关闭
+// AND => 连接必须在白名单上，且不在黑名单上
+// OR => 连接必须在白名单上，或不在黑名单上
 $ip_ruleset = 'OFF';
 
-// Should users be notified of their block?
+// 是否应该通知用户他们被屏蔽了？
 $ip_silent = true;
 
-// IP-addresses, both ipv4 and ipv6
+// 白名单, both ipv4 and ipv6
 $ip_whitelist = array(
     '127.0.0.1',    // local ipv4
     '::1'           // local ipv6
 );
 
-// IP-addresses, both ipv4 and ipv6
+// 黑名单, both ipv4 and ipv6
 $ip_blacklist = array(
     '0.0.0.0',      // non-routable meta ipv4
     '::'            // non-routable meta ipv6
 );
 
-// if User has the external config file, try to use it to override the default config above [config.php]
-// sample config - https://tinyfilemanager.github.io/config-sample.txt
+// 如果用户有外部配置文件，请尝试使用它来覆盖上述 [config.php] 的默认配置
+// 示例配置 - https://tinyfilemanager.github.io/config-sample.txt
 $config_file = __DIR__.'/config.php';
 if (is_readable($config_file)) {
     @include($config_file);
 }
 
-// External CDN resources that can be used in the HTML (replace for GDPR compliance)
+// 可在 HTML 中使用的外部 CDN 资源（为符合 GDPR 要求而替换）
 $external = array(
     'css-bootstrap' => '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">',
     'css-dropzone' => '<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" rel="stylesheet">',
@@ -164,40 +163,40 @@ $external = array(
     'pre-cloudflare' => '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>'
 );
 
-// --- EDIT BELOW CAREFULLY OR DO NOT EDIT AT ALL ---
+// --- 请仔细编辑以下内容，否则请勿编辑 ---
 
-// max upload file size
+// 最大上传文件大小
 define('MAX_UPLOAD_SIZE', $max_upload_size_bytes);
 
-// upload chunk size
+// 上传块大小
 define('UPLOAD_CHUNK_SIZE', $upload_chunk_size_bytes);
 
-// private key and session name to store to the session
+// 私钥和会话名称存储到会话中
 if ( !defined( 'FM_SESSION_ID')) {
     define('FM_SESSION_ID', 'filemanager');
 }
 
-// Configuration
+// 配置
 $cfg = new FM_Config();
 
-// Default language
-$lang = isset($cfg->data['lang']) ? $cfg->data['lang'] : 'en';
+// 默认语言
+$lang = isset($cfg->data['lang']) ? $cfg->data['lang'] : 'cn';
 
-// Show or hide files and folders that starts with a dot
+// 显示或隐藏以点开头的文件和文件夹
 $show_hidden_files = isset($cfg->data['show_hidden']) ? $cfg->data['show_hidden'] : true;
 
-// PHP error reporting - false = Turns off Errors, true = Turns on Errors
+// PHP 错误报告 - false = 关闭错误，true = 打开错误
 $report_errors = isset($cfg->data['error_reporting']) ? $cfg->data['error_reporting'] : true;
 
-// Hide Permissions and Owner cols in file-listing
+// 隐藏文件列表中的权限和所有者列
 $hide_Cols = isset($cfg->data['hide_Cols']) ? $cfg->data['hide_Cols'] : true;
 
-// Theme
-$theme = isset($cfg->data['theme']) ? $cfg->data['theme'] : 'light';
+// 主题
+$theme = isset($cfg->data['theme']) ? $cfg->data['theme'] : 'dark';
 
 define('FM_THEME', $theme);
 
-//available languages
+//可用语言
 $lang_list = array(
     'cn' => '中文',
     'en' => 'English'
@@ -228,10 +227,10 @@ if (defined('FM_EMBED')) {
         mb_regex_encoding('UTF-8');
     }
 
-    session_cache_limiter('nocache'); // Prevent logout issue after page was cached
+    session_cache_limiter('nocache'); // 防止页面被缓存后出现注销问题
     session_name(FM_SESSION_ID );
     function session_error_handling_function($code, $msg, $file, $line) {
-        // Permission denied for default session, try to create a new one
+        // 默认会话的权限被拒绝，尝试创建新会话
         if ($code == 2) {
             session_abort();
             session_id(session_create_id());
@@ -243,7 +242,7 @@ if (defined('FM_EMBED')) {
     restore_error_handler();
 }
 
-//Generating CSRF Token
+//生成 CSRF 令牌
 if (empty($_SESSION['token'])) {
     if (function_exists('random_bytes')) {
         $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -259,15 +258,15 @@ if (empty($auth_users)) {
 $is_https = isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1)
     || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https';
 
-// update $root_url based on user specific directories
+// 根据用户特定目录更新 $root_url
 if (isset($_SESSION[FM_SESSION_ID]['logged']) && !empty($directories_users[$_SESSION[FM_SESSION_ID]['logged']])) {
     $wd = fm_clean_path(dirname($_SERVER['PHP_SELF']));
     $root_url =  $root_url.$wd.DIRECTORY_SEPARATOR.$directories_users[$_SESSION[FM_SESSION_ID]['logged']];
 }
-// clean $root_url
+// 清理  $root_url
 $root_url = fm_clean_path($root_url);
 
-// abs path for site
+// 网站abs路径
 defined('FM_ROOT_URL') || define('FM_ROOT_URL', ($is_https ? 'https' : 'http') . '://' . $http_host . (!empty($root_url) ? '/' . $root_url : ''));
 defined('FM_SELF_URL') || define('FM_SELF_URL', ($is_https ? 'https' : 'http') . '://' . $http_host . $_SERVER['PHP_SELF']);
 
@@ -278,7 +277,7 @@ if (isset($_GET['logout'])) {
     fm_redirect(FM_SELF_URL);
 }
 
-// Validate connection IP
+// 验证连接 IP
 if ($ip_ruleset != 'OFF') {
     function getClientIP() {
         if (array_key_exists('HTTP_CF_CONNECTING_IP', $_SERVER)) {
@@ -321,7 +320,7 @@ if ($ip_ruleset != 'OFF') {
     }
 }
 
-// Checking if the user is logged in or not. If not, it will show the login form.
+// 检查用户是否已登录。如果没有，就会显示登录表单。
 if ($use_auth) {
     if (isset($_SESSION[FM_SESSION_ID]['logged'], $auth_users[$_SESSION[FM_SESSION_ID]['logged']])) {
         // Logged
@@ -1012,7 +1011,7 @@ if (!empty($_FILES) && !FM_READONLY) {
                         'info' => "failed to open output stream"
                         );
                 }
-
+//如果目标文件存在，则重命名
                 if ($chunkIndex == $chunkTotal - 1) {
                     if (file_exists ($fullPath)) {
                         $ext_1 = $ext ? '.'.$ext : '';
@@ -1022,6 +1021,13 @@ if (!empty($_FILES) && !FM_READONLY) {
                     }
                     rename("{$fullPath}.part", $fullPathTarget);
                 }
+// 如果目标文件存在，则删除它
+/*if ($chunkIndex == $chunkTotal - 1) {
+    if (file_exists($fullPath)) {
+        unlink($fullPath);
+    }
+    rename("{$fullPath}.part", $fullPath);
+}*/
 
             } else if (move_uploaded_file($tmp_name, $fullPath)) {
                 // Be sure that the file has been uploaded
